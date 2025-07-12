@@ -3,3 +3,4 @@ dbldatagen
 faker==19.12.0
 numpy
 pandas
+pyparsing

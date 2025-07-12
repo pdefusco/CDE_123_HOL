@@ -50,8 +50,8 @@ loading_icon_env "Python Env Build in Progress"
 
 echo "CREATE AND RUN SETUP JOB"
 cde job delete --name cde123-hol-setup-job
-cde job create --name cde123-hol-setup-job --type spark --mount-1-resource cde123-hol-setup-fs --application-file setup.py --python-env-resource-name datagen-hol-setup-py
-cde job run --name cde123-hol-setup-job --arg $max_participants --arg $cdp_data_lake_storage --executor-memory "2g" --executor-cores 2
+cde job create --name cde123-hol-setup-job --type spark --mount-1-resource cde123-hol-setup-fs --application-file setup.py --python-env-resource-name datagen-hol-setup-py --arg $max_participants --arg $cdp_data_lake_storage
+cde job run --name cde123-hol-setup-job --executor-memory "2g" --executor-cores 2
 
 function loading_icon_job() {
   local loading_animation=( '—' "\\" '|' '/' )

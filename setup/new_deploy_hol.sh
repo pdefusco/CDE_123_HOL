@@ -20,8 +20,8 @@ cde resource create --name cde123-hol-setup-fs --type files
 cde resource upload --name cde123-hol-setup-fs --local-path setup/utils.py --local-path setup/setup.py
 echo "CREATE PYTHON RESOURCE"
 cde resource delete --name cde123-hol-setup-py
-cde resource create --type python-env --name cde123-hol-setup-py
-cde resource upload --name cde123-hol-setup-py --local-path setup/requirements.txt
+cde resource create --type python-env --name datagen-hol-setup-py
+cde resource upload --name datagen-hol-setup-py --local-path setup/requirements.txt
 
 function loading_icon_env() {
   local loading_animation=( '—' "\\" '|' '/' )
@@ -32,7 +32,7 @@ function loading_icon_env() {
   trap "tput cnorm" EXIT
 
   while true; do
-    build_status=$(cde resource describe --name cde123-hol-setup-py | jq -r '.status')
+    build_status=$(cde resource describe --name datagen-hol-setup-py | jq -r '.status')
     if [[ $build_status == $"ready" ]]; then
       echo "Setup Python Env Build Completed."
       break
@@ -50,8 +50,8 @@ loading_icon_env "Python Env Build in Progress"
 
 echo "CREATE AND RUN SETUP JOB"
 cde job delete --name cde123-hol-setup-job
-cde job create --name cde123-hol-setup-job --type spark --mount-1-resource cde123-hol-setup-fs --application-file setup.py --python-env-resource-name cde123-hol-setup-py
-cde job run --name cde123-hol-setup-job --arg $max_participants --arg $cdp_data_lake_storage
+cde job create --name cde123-hol-setup-job --type spark --mount-1-resource cde123-hol-setup-fs --application-file setup.py --python-env-resource-name datagen-hol-setup-py
+cde job run --name cde123-hol-setup-job --arg $max_participants --arg $cdp_data_lake_storage --executor-memory "2g" --executor-cores 2
 
 function loading_icon_job() {
   local loading_animation=( '—' "\\" '|' '/' )

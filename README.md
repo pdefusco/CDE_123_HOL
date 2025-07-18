@@ -1,9 +1,11 @@
 # CDE 1.23 Hands On Lab
 
-# CDE Hands On Lab
-
 >**⚠ Warning**  
->This content is deprecated. As of June 2025 the latest CDE version is 1.24. Please use the updated version of the HOL available at [this GitHub repository](https://github.com/pdefusco/CDE_123_HOL).
+>This content is deprecated. As of June 2025 the latest CDE version is 1.24. Please use the updated version of the HOL available at [this GitHub repository](https://github.com/pdefusco/CDE_124_HOL).
+
+![alt text](/img/stop.png)
+
+# CDE Hands On Lab
 
 ![alt text](/img/new-ref-arch.png)
 
